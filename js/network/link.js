@@ -7,6 +7,8 @@ class Link {
     var startVector = nodes[0].mesh.position
     var endVector = nodes[1].mesh.position
 
+    this.nodes = nodes
+
     this.geometry = new THREE.Geometry()
     this.geometry.vertices.push(startVector, endVector)
     this.geometry.computeLineDistances()
