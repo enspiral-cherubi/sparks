@@ -14,14 +14,24 @@ module.exports = {
 
   start: function () {
     var self = this
-
-    requestAnimationFrame(function render (nowMsec) {
+    this.addBoundingBox()
+    requestAnimationFrame(function render () {
       requestAnimationFrame(render)
       self.renderer.render(self.scene, self.camera)
     })
   },
 
   // private
+
+  addBoundingBox: function () {
+    var boxGeom = new THREE.BoxGeometry(100,100,100)
+    var material = new THREE.MeshBasicMaterial({color: 0x000000, wireframe: true})
+    var box = new THREE.Mesh(boxGeom, material)
+    this.scene.add(box)
+    box.position.x = 50
+    box.position.y = 50
+    box.position.z = 50
+  },
 
   addAxes: function () {
     var axes = new THREE.AxisHelper(5)
@@ -35,7 +45,7 @@ module.exports = {
   },
 
   initControls: function () {
-    this.camera.position.z = 10
+    this.camera.position.z = 200
     this.controls = new OrbitControls(this.camera)
   }
 
