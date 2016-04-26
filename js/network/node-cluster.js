@@ -1,6 +1,7 @@
 import THREE from 'three'
 import randomNumberInRange from 'random-number-in-range'
 import range from 'lodash.range'
+import Combinatorics from 'js-combinatorics'
 
 class NodeCluster {
 
@@ -12,6 +13,9 @@ class NodeCluster {
 
     this.nodes = this._generateNodes()
     this.nodes.forEach(node => this.scene.add(node))
+
+    this.links = this._generateLinks()
+    this.links.forEach(link => this.scene.add(link))
   }
 
   // 'private'
@@ -25,6 +29,22 @@ class NodeCluster {
       node.position.y = randomNumberInRange(this.boundingBoxSize)
       node.position.z = randomNumberInRange(this.boundingBoxSize)
       return node
+    })
+  }
+
+  _generateLinks () {
+    var pairs = Combinatorics.combination(this.nodes, 2)
+    return pairs.map((pair) => {
+      var startVector = pair[0].position
+      var endVector = pair[1].position
+
+      var lineGeometry = new THREE.Geometry()
+      lineGeometry.vertices.push(startVector, endVector)
+      lineGeometry.computeLineDistances()
+      var lineMaterial = new THREE.LineBasicMaterial({ color: this.color, linewidth: 2 })
+      var line = new THREE.Line(lineGeometry, lineMaterial)
+
+      return line
     })
   }
 

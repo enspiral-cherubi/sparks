@@ -34,6 +34,7 @@
   },
   "homepage": "https://github.com/data-doge/sparks",
   "dependencies": {
+    "js-combinatorics": "^0.5.1",
     "lodash.range": "^3.1.4",
     "random-number-in-range": "^1.0.0",
     "randomcolor": "^0.4.4",
