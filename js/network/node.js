@@ -9,7 +9,11 @@ class Node {
 
     this.geometry = new THREE.TetrahedronGeometry(3)
 
-    this.material = new THREE.MeshBasicMaterial({ color: opts.color })
+    this.material = new THREE.MeshBasicMaterial({
+      color: opts.color,
+      opacity: 0.6,
+      transparent: true
+    })
 
     this.mesh = new THREE.Mesh(this.geometry, this.material)
     var coords = range(3).map(() => {

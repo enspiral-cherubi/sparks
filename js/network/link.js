@@ -15,11 +15,20 @@ class Link {
 
     this.material = new THREE.LineBasicMaterial({
       color: opts.color,
-      opacity: 0.8,
+      opacity: 0.6,
+      transparent: true,
       linewidth: 2
     })
 
     this.mesh = new THREE.Line(this.geometry, this.material)
+  }
+
+  update () {
+    this.mesh.geometry.vertices = []
+    var startVector = this.nodes[0].mesh.position
+    var endVector = this.nodes[1].mesh.position
+    this.mesh.geometry.vertices.push(startVector, endVector)
+    this.geometry.verticesNeedUpdate = true
   }
 
 }

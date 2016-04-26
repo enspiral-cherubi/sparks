@@ -12,19 +12,24 @@ class NodeCluster {
     this.scene = opts.scene
     this.boundingBoxSize = opts.boundingBoxSize
     this.nodes = this._generateNodes()
-    // this.links = this._generateLinks()
+    this.links = this._generateLinks()
+    this._init()
   }
 
   render () {
-    this.nodes.forEach((node) => {
-      node.update()
-      this.scene.add(node.mesh)
-      this.scene.add(node.edges)
-    })
-    // this.links.forEach(link => this.scene.add(link.mesh))
+    this.nodes.forEach(node => node.update())
+    this.links.forEach(link => link.update())
   }
 
   // 'private'
+
+  _init () {
+    this.nodes.forEach((node) => {
+      this.scene.add(node.mesh)
+      this.scene.add(node.edges)
+    })
+    this.links.forEach(link => this.scene.add(link.mesh))
+  }
 
   _generateNodes () {
     return range(this.size).map(() => {
