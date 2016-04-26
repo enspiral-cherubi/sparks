@@ -1,8 +1,8 @@
 {
   "name": "sparks",
   "version": "1.0.0",
-  "description": "it's a real sweet app",
-  "main": "index.js",
+  "description": "sparks",
+  "main": "./js/index.js",
   "scripts": {
     "start": "budo . -d --serve bundle.js --live",
     "build": "browserify . -o bundle.js -g uglifyify",
@@ -24,7 +24,11 @@
     "url": "https://github.com/data-doge/sparks/issues"
   },
   "homepage": "https://github.com/data-doge/sparks",
-  "dependencies": {},
+  "dependencies": {
+    "three": "^0.76.1",
+    "three-orbit-controls": "^72.0.0",
+    "three-window-resize": "^1.0.4"
+  },
   "devDependencies": {
     "browserify": "^10.0.0",
     "budo": "^4.0.0",
