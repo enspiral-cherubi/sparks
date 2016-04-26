@@ -12,7 +12,10 @@ class NodeCluster {
     this.boundingBoxSize = opts.boundingBoxSize
 
     this.nodes = this._generateNodes()
-    this.nodes.forEach(node => this.scene.add(node))
+    this.nodes.forEach((node) => {
+      this.scene.add(node)
+      this.scene.add(node.edges)
+    })
 
     this.links = this._generateLinks()
     this.links.forEach(link => this.scene.add(link))
@@ -22,12 +25,18 @@ class NodeCluster {
 
   _generateNodes () {
     return range(this.size).map(() => {
-      var geometry = new THREE.SphereGeometry(5, 10, 10)
-      var material = new THREE.MeshBasicMaterial({color: this.color, wireframe: true})
+      var geometry = new THREE.TetrahedronGeometry(5)
+      var material = new THREE.MeshBasicMaterial({
+        color: this.color,
+        opacity: 0.5,
+        transparent: true
+      })
       var node = new THREE.Mesh(geometry, material)
       node.position.x = randomNumberInRange(this.boundingBoxSize)
       node.position.y = randomNumberInRange(this.boundingBoxSize)
       node.position.z = randomNumberInRange(this.boundingBoxSize)
+      var edges = new THREE.EdgesHelper(node, 0xffffff)
+      node.edges = edges
       return node
     })
   }
@@ -41,7 +50,11 @@ class NodeCluster {
       var lineGeometry = new THREE.Geometry()
       lineGeometry.vertices.push(startVector, endVector)
       lineGeometry.computeLineDistances()
-      var lineMaterial = new THREE.LineBasicMaterial({ color: this.color, linewidth: 2 })
+      var lineMaterial = new THREE.LineBasicMaterial({
+        color: this.color,
+        opacity: 0.8,
+        linewidth: 2
+      })
       var line = new THREE.Line(lineGeometry, lineMaterial)
 
       return line
