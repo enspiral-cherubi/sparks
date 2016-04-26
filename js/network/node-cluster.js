@@ -1,41 +1,61 @@
 import THREE from 'three'
 import range from 'lodash.range'
 import Combinatorics from 'js-combinatorics'
+import randomNumberInRange from 'random-number-in-range'
 import Node from './node.js'
 import Link from './link.js'
+import Tuna from 'tunajs'
 
 class NodeCluster {
 
   constructor (opts) {
-    this.size = opts.size
-    this.color = opts.color
-    this.scene = opts.scene
-    this.boundingBoxSize = opts.boundingBoxSize
+    this.opts = opts
     this.nodes = this._generateNodes()
     this.links = this._generateLinks()
     this._init()
+
+    this.sourceNode = opts.audioCtx.createOscillator()
+    this.sourceNode.type = 'sine'
+    this.sourceNode.start()
+
+    var tuna = new Tuna(opts.audioCtx)
+
+    this.moog = new tuna.MoogFilter({
+      bufferSize: 4096  //256 to 16384
+    })
+
+    this.sourceNode.connect(this.moog)
+    this.moog.connect(this.opts.audioOut)
   }
 
   render () {
     this.nodes.forEach(node => node.update())
     this.links.forEach(link => link.update())
+
+    var freq = this.links[0].distance()
+    var cutoff = this.links[1].distance()
+    var resonance = this.links[2].distance()
+
+    this.sourceNode.frequency.value = freq * 1000  // 0 to 1000
+    this.moog.processor.cutoff = cutoff            // 0 to 1
+    this.moog.processor.resonance = resonance * 4  // 0 to 4
   }
 
   // 'private'
 
   _init () {
     this.nodes.forEach((node) => {
-      this.scene.add(node.mesh)
-      this.scene.add(node.edges)
+      this.opts.scene.add(node.mesh)
+      this.opts.scene.add(node.edges)
     })
-    this.links.forEach(link => this.scene.add(link.mesh))
+    this.links.forEach(link => this.opts.scene.add(link.mesh))
   }
 
   _generateNodes () {
-    return range(this.size).map(() => {
+    return range(this.opts.size).map(() => {
       return new Node({
-        boundingBoxSize: this.boundingBoxSize,
-        color: this.color
+        boundingBoxSize: this.opts.boundingBoxSize,
+        color: this.opts.color
       })
     })
   }
@@ -43,7 +63,11 @@ class NodeCluster {
   _generateLinks () {
     var pairs = Combinatorics.combination(this.nodes, 2)
     return pairs.map((pair) => {
-      return new Link(pair, {color: this.color})
+      return new Link(pair, {
+        color: this.opts.color,
+        audioOut: this.opts.audioOut,
+        audioCtx: this.opts.audioCtx
+      })
     })
   }
 

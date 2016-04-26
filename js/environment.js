@@ -25,8 +25,8 @@ class Environment {
     this.network = new Network({
       scene: this.scene,
       boundingBoxSize: this.boundingBoxSize,
-      nodeClusterCount: 10,
-      nodeClusterSize: 5
+      nodeClusterCount: 20,
+      nodeClusterSize: 3
     })
   }
 
