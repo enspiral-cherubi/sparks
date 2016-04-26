@@ -1,4 +1,3 @@
-var environment = require('./environment')
+import environment from './environment.js'
 
-environment.init()
 environment.start()
