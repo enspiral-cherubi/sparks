@@ -29,6 +29,7 @@ class Environment {
     var self = this
     requestAnimationFrame(function render () {
       requestAnimationFrame(render)
+      self.network.render()
       self.renderer.render(self.scene, self.camera)
     })
   }

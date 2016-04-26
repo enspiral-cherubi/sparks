@@ -19,6 +19,10 @@ class Network {
     })
   }
 
+  render () {
+    this.nodeClusters.forEach(cluster => cluster.render())
+  }
+
 }
 
 export default Network
