@@ -9,7 +9,6 @@ class Network {
     this.boundingBoxSize = opts.boundingBoxSize
     this.nodeClusterCount = opts.nodeClusterCount || 10
     this.nodeClusterSize = opts.nodeClusterSize || 3
-    console.log(new Array(this.nodeClusterCount))
     this.nodeClusters = range(this.nodeClusterCount).map(() => {
       return new NodeCluster({
         size: this.nodeClusterSize,
