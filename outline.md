@@ -1,0 +1,7 @@
+- bunch of little nodes in triplets of 3.
+- each pair has a unique color.
+- there are 10 triplets.
+- each node has a randomly generated vector.
+- there is a link between each node.
+- for each link, there is an audioNode.
+- that audionode's frequency is proportional to its length.
