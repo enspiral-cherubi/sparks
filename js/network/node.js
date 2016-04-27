@@ -7,7 +7,7 @@ class Node {
   constructor (opts) {
     this.opts = opts
 
-    this.geometry = new THREE.TetrahedronGeometry(3)
+    this.geometry = new THREE.TetrahedronGeometry(6)
 
     this.material = new THREE.MeshBasicMaterial({
       color: opts.color,
@@ -21,25 +21,19 @@ class Node {
     })
     this.mesh.position.set(...coords)
 
-    this.edges = new THREE.EdgesHelper(this.mesh, 0xffffff)
+    this.edges = new THREE.EdgesHelper(this.mesh, 0x000000)
 
     this.vector = new THREE.Vector3(
-      randomNumberInRange(-10, 10) / 100,
-      randomNumberInRange(-10, 10) / 100,
-      randomNumberInRange(-10, 10) / 100
+      randomNumberInRange(-10, 10) / 200,
+      randomNumberInRange(-10, 10) / 200,
+      randomNumberInRange(-10, 10) / 200
     )
   }
 
   update () {
-    if (this.mesh.position.x > this.opts.boundingBoxSize || this.mesh.position.x < 0) {
-      this.vector.x = this.vector.x * -1
-    }
-    if (this.mesh.position.y > this.opts.boundingBoxSize || this.mesh.position.y < 0) {
-      this.vector.y = this.vector.y * -1
-    }
-    if (this.mesh.position.z > this.opts.boundingBoxSize || this.mesh.position.z < 0) {
-      this.vector.z = this.vector.z * -1
-    }
+    if (this.mesh.position.x > this.opts.boundingBoxSize || this.mesh.position.x < 0) { this.vector.x = this.vector.x * -1 }
+    if (this.mesh.position.y > this.opts.boundingBoxSize || this.mesh.position.y < 0) { this.vector.y = this.vector.y * -1 }
+    if (this.mesh.position.z > this.opts.boundingBoxSize || this.mesh.position.z < 0) { this.vector.z = this.vector.z * -1 }
 
     this.mesh.position.set(
       this.mesh.position.x + this.vector.x,

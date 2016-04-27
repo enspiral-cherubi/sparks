@@ -17,7 +17,7 @@ class Link {
 
     this.material = new THREE.LineBasicMaterial({
       color: opts.color,
-      opacity: 0.6,
+      opacity: 0.8,
       transparent: true,
       linewidth: 2
     })

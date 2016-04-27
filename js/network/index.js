@@ -8,7 +8,7 @@ class Network {
     this.audioCtx = new (window.AudioContext || window.webkitAudioContext)()
 
     this.audioOut = this.audioCtx.createGain()
-    this.audioOut.gain.value = 0.01
+    this.audioOut.gain.value = 0.3
     this.audioOut.connect(this.audioCtx.destination)
 
     this.scene = opts.scene
@@ -18,7 +18,7 @@ class Network {
     this.nodeClusters = range(this.nodeClusterCount).map(() => {
       return new NodeCluster({
         size: this.nodeClusterSize,
-        color: randomColor(),
+        color: randomColor({luminosity: 'random'}),
         scene: this.scene,
         boundingBoxSize: this.boundingBoxSize,
         audioCtx: this.audioCtx,

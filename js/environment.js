@@ -11,13 +11,13 @@ class Environment {
 
     this.scene = new THREE.Scene()
 
-    this.camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000)
+    this.camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.01, 1000)
     this.camera.position.set(this.boundingBoxSize * 1.2, this.boundingBoxSize * 1.2, this.boundingBoxSize * 1.2)
     this.controls = new OrbitControls(this.camera)
 
     this.renderer = new THREE.WebGLRenderer({alpha: true, canvas: document.getElementById('environment')})
     this.renderer.setSize(window.innerWidth, window.innerHeight)
-    this.renderer.setClearColor(0x000000, 1)
+    this.renderer.setClearColor(0xffffff, 1)
     document.body.appendChild(this.renderer.domElement)
 
     var windowResize = new WindowResize(this.renderer, this.camera)
@@ -25,7 +25,7 @@ class Environment {
     this.network = new Network({
       scene: this.scene,
       boundingBoxSize: this.boundingBoxSize,
-      nodeClusterCount: 20,
+      nodeClusterCount: 30,
       nodeClusterSize: 3
     })
   }

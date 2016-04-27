@@ -6,7 +6,7 @@ import Node from './node.js'
 import Link from './link.js'
 import Tuna from 'tunajs'
 import LogScale from 'log-scale'
-var logScale = new LogScale(1,20000)
+var logScale = new LogScale(20,5000)
 
 class NodeCluster {
 
@@ -38,7 +38,7 @@ class NodeCluster {
     var cutoff = this.links[1].distance()
     var resonance = this.links[2].distance()
 
-    this.sourceNode.frequency.value = logScale.linearToLogarithmic(freq)  // 0 to 20000 (logarithmic scale)
+    this.sourceNode.frequency.value = logScale.linearToLogarithmic(freq)  // 20 to 5000hz (logarithmic scale)
     this.moog.processor.cutoff = cutoff            // 0 to 1
     this.moog.processor.resonance = resonance * 4  // 0 to 4
   }
