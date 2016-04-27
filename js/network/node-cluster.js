@@ -5,6 +5,8 @@ import randomNumberInRange from 'random-number-in-range'
 import Node from './node.js'
 import Link from './link.js'
 import Tuna from 'tunajs'
+import LogScale from 'log-scale'
+var logScale = new LogScale(1,20000)
 
 class NodeCluster {
 
@@ -36,7 +38,7 @@ class NodeCluster {
     var cutoff = this.links[1].distance()
     var resonance = this.links[2].distance()
 
-    this.sourceNode.frequency.value = freq * 1000  // 0 to 1000
+    this.sourceNode.frequency.value = logScale.linearToLogarithmic(freq)  // 0 to 20000 (logarithmic scale)
     this.moog.processor.cutoff = cutoff            // 0 to 1
     this.moog.processor.resonance = resonance * 4  // 0 to 4
   }
