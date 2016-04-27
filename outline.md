@@ -1,2 +1,0 @@
-- for each link, there is an audioNode.
-- that audionode's frequency is proportional to its length.
