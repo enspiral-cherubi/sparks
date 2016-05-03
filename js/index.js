@@ -1,3 +1,4 @@
-import environment from './environment.js'
+import engine from './engine.js'
 
-environment.start()
+engine.bindEventListeners()
+engine.start()

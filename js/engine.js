@@ -1,10 +1,11 @@
+import $ from 'jquery'
 import THREE from 'three'
 import ThreeOrbitControls from 'three-orbit-controls'
 var OrbitControls = ThreeOrbitControls(THREE)
 import WindowResize from 'three-window-resize'
 import Network from './network/index.js'
 
-class Environment {
+class Engine {
 
   constructor () {
     this.boundingBoxSize = 200
@@ -30,6 +31,13 @@ class Environment {
     })
   }
 
+  bindEventListeners () {
+    var self = this
+    $('#clear-btn').click(() => {
+      self.network.clear()
+    })
+  }
+
   start () {
     var self = this
 
@@ -42,4 +50,4 @@ class Environment {
 
 }
 
-export default new Environment
+export default new Engine
