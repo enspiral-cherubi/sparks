@@ -1,5 +1,7 @@
 import NodeCluster from './node-cluster.js'
 import Tuna from 'tunajs'
+import LogScale from 'log-scale'
+var logScale = new LogScale(20,5000)
 
 class SineWaveNodeCluster extends NodeCluster {
 

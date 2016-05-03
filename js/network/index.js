@@ -14,7 +14,9 @@ class Network {
     this.audioOut.connect(this.audioCtx.destination)
 
     this.nodeClusters = []
-    times(opts.nodeClusterCount || 10, this.addCluster.bind(this))
+    times(opts.nodeClusterCount || 10, () => {
+      this.addCluster()
+    })
   }
 
   render () {
@@ -31,7 +33,12 @@ class Network {
       audioOut: this.audioOut
     }
 
-    var cluster = type === 'sine' ? new SineWaveNodeCluster(params) : new RecordedSampleNodeCluster(params)
+    if (type === 'sine') {
+      var cluster = new SineWaveNodeCluster(params)
+    } else {
+      var cluster = new RecordedSampleNodeCluster(params)
+    }
+
     this.nodeClusters.push(cluster)
   }
 

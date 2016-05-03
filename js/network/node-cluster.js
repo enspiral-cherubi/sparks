@@ -4,8 +4,6 @@ import Combinatorics from 'js-combinatorics'
 import randomNumberInRange from 'random-number-in-range'
 import Node from './node.js'
 import Link from './link.js'
-import LogScale from 'log-scale'
-var logScale = new LogScale(20,5000)
 
 class NodeCluster {
 
