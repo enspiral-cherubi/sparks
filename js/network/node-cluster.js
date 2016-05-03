@@ -50,6 +50,8 @@ class NodeCluster {
     })
 
     this.links.forEach(link => this.opts.scene.remove(link.mesh))
+
+    this.sourceNode.disconnect()
   }
 
   // 'private'

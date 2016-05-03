@@ -34,9 +34,8 @@ class Engine {
 
   bindEventListeners () {
     var self = this
-    $('#clear-btn').click(() => {
-      self.network.clear()
-    })
+    $('#clear-btn').click(() => { self.network.clear() })
+    $('#add-btn').click(() => { self.network.addCluster() })
   }
 
   start () {

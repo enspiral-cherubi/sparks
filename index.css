@@ -14,3 +14,9 @@ html, body {
   bottom: 20px;
   right: 20px;
 }
+
+#add-btn {
+  position: absolute;
+  bottom: 20px;
+  right: 100px;
+}
