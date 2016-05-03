@@ -10,7 +10,7 @@ class Network {
     this.opts = opts
     this.audioCtx = new (window.AudioContext || window.webkitAudioContext)()
     this.audioOut = this.audioCtx.createGain()
-    this.audioOut.gain.value = 0.3
+    this.audioOut.gain.value = 1
     this.audioOut.connect(this.audioCtx.destination)
 
     this.nodeClusters = []
@@ -23,7 +23,7 @@ class Network {
     this.nodeClusters.forEach(cluster => cluster.render())
   }
 
-  addCluster (type = 'sine') {
+  addCluster (monoData) {
     var opts = {
       size: this.opts.nodeClusterSize || 3,
       color: randomColor({luminosity: 'random'}),
@@ -33,11 +33,10 @@ class Network {
       audioOut: this.audioOut
     }
 
-    if (type === 'sine') {
-      var cluster = new SineWaveNodeCluster(opts)
+    if (monoData) {
+      var cluster = new RecordedSampleNodeCluster(monoData, opts)
     } else {
-      opts.recordedSampleNode = this.microphone
-      var cluster = new RecordedSampleNodeCluster(opts)
+      var cluster = new SineWaveNodeCluster(opts)
     }
 
     this.nodeClusters.push(cluster)

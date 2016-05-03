@@ -3,11 +3,15 @@ import Tuna from 'tunajs'
 
 class RecordedSampleNodeCluster extends NodeCluster {
 
-  constructor (opts) {
+  constructor (monoData, opts) {
     super(opts)
 
-    // pass in an audio node
-    this.sourceNode = opts.recordedSampleNode
+    this.sourceNode = opts.audioCtx.createBufferSource()
+    var newBuffer = opts.audioCtx.createBuffer(2, monoData.length, opts.audioCtx.sampleRate)
+    newBuffer.getChannelData(0).set(monoData)
+    newBuffer.getChannelData(1).set(monoData)
+    this.sourceNode.buffer = newBuffer
+    this.sourceNode.loop = true
     this.sourceNode.start()
 
     var tuna = new Tuna(opts.audioCtx)

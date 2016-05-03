@@ -9,12 +9,6 @@ html, body {
   width: 100%;
 }
 
-#clear-btn {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-}
-
 #add-sine-wave-node-cluster-btn {
   position: absolute;
   bottom: 20px;

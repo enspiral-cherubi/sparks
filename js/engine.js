@@ -5,6 +5,8 @@ var OrbitControls = ThreeOrbitControls(THREE)
 import WindowResize from 'three-window-resize'
 import Network from './network/index.js'
 import loop from 'raf-loop'
+import RecordMic from 'recordmic'
+var recordMic = new RecordMic({}, () => {})
 
 class Engine {
 
@@ -35,7 +37,17 @@ class Engine {
   bindEventListeners () {
     var self = this
     $('#clear-btn').click(() => { self.network.clear() })
-    $('#add-sine-wave-node-cluster-btn').click(() => { self.network.addCluster('sine') })
+    $('#add-sine-wave-node-cluster-btn').click(() => { self.network.addCluster() })
+    $('#start-recording').click(() => {
+      recordMic.clear()
+      recordMic.start()
+    })
+
+    $('#stop-recording').click(() => {
+      recordMic.stop()
+      var monoData = recordMic.getMonoData()
+      self.network.addCluster(monoData)
+    })
   }
 
   start () {
