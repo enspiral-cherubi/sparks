@@ -4,6 +4,7 @@ import ThreeOrbitControls from 'three-orbit-controls'
 var OrbitControls = ThreeOrbitControls(THREE)
 import WindowResize from 'three-window-resize'
 import Network from './network/index.js'
+import loop from 'raf-loop'
 
 class Engine {
 
@@ -39,13 +40,10 @@ class Engine {
   }
 
   start () {
-    var self = this
-
-    requestAnimationFrame(function render () {
-      requestAnimationFrame(render)
-      self.network.render()
-      self.renderer.render(self.scene, self.camera)
-    })
+    this.renderLoop = loop(() => {
+      this.network.render()
+      this.renderer.render(this.scene, this.camera)
+    }).start()
   }
 
 }
