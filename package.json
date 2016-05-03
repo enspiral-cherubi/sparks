@@ -34,6 +34,7 @@
   },
   "homepage": "https://github.com/enspiral-cherubi/sparks",
   "dependencies": {
+    "jquery": "^2.2.3",
     "js-combinatorics": "^0.5.1",
     "lodash.range": "^3.1.4",
     "log-scale": "^1.0.1",

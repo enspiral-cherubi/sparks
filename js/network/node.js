@@ -41,7 +41,7 @@ class Node {
       this.mesh.position.z + this.vector.z
     )
   }
-
+  
 }
 
 export default Node

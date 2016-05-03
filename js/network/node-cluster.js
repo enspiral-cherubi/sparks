@@ -43,6 +43,15 @@ class NodeCluster {
     this.moog.processor.resonance = resonance * 4  // 0 to 4
   }
 
+  remove () {
+    this.nodes.forEach((node) => {
+      this.opts.scene.remove(node.mesh)
+      this.opts.scene.remove(node.edges)
+    })
+
+    this.links.forEach(link => this.opts.scene.remove(link.mesh))
+  }
+
   // 'private'
 
   _init () {

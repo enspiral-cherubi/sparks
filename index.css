@@ -8,3 +8,9 @@ html, body {
   height: 100%;
   width: 100%;
 }
+
+#clear-btn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}

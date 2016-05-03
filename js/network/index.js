@@ -32,6 +32,11 @@ class Network {
     this.nodeClusters.push(cluster)
   }
 
+  clear () {
+    this.nodeClusters.forEach(nodeCluster => nodeCluster.remove())
+    this.nodeClusters = []
+  }
+
 }
 
 export default Network
