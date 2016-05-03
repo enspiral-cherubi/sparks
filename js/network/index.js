@@ -47,6 +47,14 @@ class Network {
     this.nodeClusters = []
   }
 
+  mute () {
+    this.audioOut.gain.value = 0
+  }
+
+  unmute () {
+    this.audioOut.gain.value = 1
+  }
+
 }
 
 export default Network

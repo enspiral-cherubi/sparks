@@ -21,6 +21,8 @@ class RecordedSampleNodeCluster extends NodeCluster {
     })
 
     this.sourceNode.connect(this.moog)
+    this.moog.processor.cutoff = 1     // 0 to 1
+    this.moog.processor.resonance = 4  // 0 to 4
     this.moog.connect(this.opts.audioOut)
   }
 
