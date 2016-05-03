@@ -25,14 +25,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/data-doge/sparks"
+    "url": "https://github.com/enspiral-cherubi/sparks"
   },
   "author": "data-doge",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/data-doge/sparks/issues"
+    "url": "https://github.com/enspiral-cherubi/sparks/issues"
   },
-  "homepage": "https://github.com/data-doge/sparks",
+  "homepage": "https://github.com/enspiral-cherubi/sparks",
   "dependencies": {
     "js-combinatorics": "^0.5.1",
     "lodash.range": "^3.1.4",
