@@ -15,8 +15,14 @@ html, body {
   right: 20px;
 }
 
-#add-btn {
+#add-sine-wave-node-cluster-btn {
   position: absolute;
   bottom: 20px;
   right: 100px;
+}
+
+#recording-shit {
+  position: absolute;
+  top: 20px;
+  left: 20px;
 }

@@ -35,7 +35,7 @@ class Engine {
   bindEventListeners () {
     var self = this
     $('#clear-btn').click(() => { self.network.clear() })
-    $('#add-btn').click(() => { self.network.addCluster() })
+    $('#add-sine-wave-node-cluster-btn').click(() => { self.network.addCluster('sine') })
   }
 
   start () {
