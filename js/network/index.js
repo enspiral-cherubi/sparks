@@ -1,5 +1,6 @@
 import randomColor from 'randomcolor'
-import NodeCluster from './node-cluster.js'
+import SineWaveNodeCluster from './sine-wave-node-cluster.js'
+import RecordedSampleNodeCluster from './recorded-sample-node-cluster.js'
 import range from 'lodash.range'
 import times from 'times-loop'
 
@@ -20,15 +21,17 @@ class Network {
     this.nodeClusters.forEach(cluster => cluster.render())
   }
 
-  addCluster () {
-    var cluster = new NodeCluster({
+  addCluster (type = 'sine') {
+    var params = {
       size: this.opts.nodeClusterSize || 3,
       color: randomColor({luminosity: 'random'}),
       scene: this.opts.scene,
       boundingBoxSize: this.opts.boundingBoxSize,
       audioCtx: this.audioCtx,
       audioOut: this.audioOut
-    })
+    }
+
+    var cluster = type === 'sine' ? new SineWaveNodeCluster(params) : new RecordedSampleNodeCluster(params)
     this.nodeClusters.push(cluster)
   }
 
