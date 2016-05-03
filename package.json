@@ -43,6 +43,7 @@
     "three": "^0.76.1",
     "three-orbit-controls": "^72.0.0",
     "three-window-resize": "^1.0.4",
+    "times-loop": "^1.0.0",
     "tunajs": "^0.4.4"
   },
   "devDependencies": {
