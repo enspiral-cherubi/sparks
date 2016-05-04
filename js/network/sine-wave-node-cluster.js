@@ -28,7 +28,7 @@ class SineWaveNodeCluster extends NodeCluster {
     var freq = this.links[0].distance()
     var cutoff = this.links[1].distance()
     var resonance = this.links[2].distance()
-
+    
     this.sourceNode.frequency.value = logScale.linearToLogarithmic(freq)  // 20 to 5000hz (logarithmic scale)
     this.moog.processor.cutoff = cutoff            // 0 to 1
     this.moog.processor.resonance = resonance * 4  // 0 to 4

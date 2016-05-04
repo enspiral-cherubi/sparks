@@ -30,7 +30,7 @@ class Engine {
       scene: this.scene,
       boundingBoxSize: this.boundingBoxSize,
       nodeClusterCount: 30,
-      nodeClusterSize: 3
+      nodeClusterSize: 4
     })
   }
 
