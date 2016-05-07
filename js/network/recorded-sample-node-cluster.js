@@ -22,12 +22,12 @@ class RecordedSampleNodeCluster extends NodeCluster {
 
     this.moog.processor.resonance = 4
 
-    this.chorus = new tuna.Chorus({
-      rate: 0.01,         //0.01 to 8+
-      feedback: 0.8,     //0 to 1+
-      delay: 1,     //0 to 1
-      bypass: 0          //the value 1 starts the effect as bypassed, 0 or 1
-    })
+    // this.chorus = new tuna.Chorus({
+    //   rate: 0.01,         //0.01 to 8+
+    //   feedback: 0.8,     //0 to 1+
+    //   delay: 1,     //0 to 1
+    //   bypass: 0          //the value 1 starts the effect as bypassed, 0 or 1
+    // })
 
     this.pingPongDelay = new tuna.PingPongDelay({
       wetLevel: 0.5, //0 to 1
@@ -52,7 +52,7 @@ class RecordedSampleNodeCluster extends NodeCluster {
     var delayTimeLeft = this.links[5].distance() * 10000
 
     // console.log(`cutoff: ${cutoff.toFixed(2)} | resonance: ${resonance.toFixed(2)} | delayWetLevel: ${delayWetLevel.toFixed(2)} | delayFeedback: ${delayFeedback.toFixed(2)} | delayTimeRight: ${delayTimeRight.toFixed(2)} | delayTimeLeft: ${delayTimeLeft.toFixed(2)}`)
-    
+
     this.moog.processor.cutoff = cutoff            // 0 to 1
     this.moog.processor.resonance = resonance
     this.pingPongDelay.wetLevel.gain.value = delayWetLevel.toFixed(2)
