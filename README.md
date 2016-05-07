@@ -13,8 +13,10 @@ cd
 npm install
 ```
 
-## develop
+### develop
 
 ```
 npm start
 ```
+
+and then visit `localhost:9966`
