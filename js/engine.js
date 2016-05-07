@@ -39,12 +39,16 @@ class Engine {
     $('#clear-btn').click(() => { self.network.clear() })
     $('#add-sine-wave-node-cluster-btn').click(() => { self.network.addCluster() })
     $('#start-recording').click(() => {
+      $('#start-recording').hide()
+      $('#stop-recording').show()
       self.network.mute()
       recordMic.clear()
       recordMic.start()
     })
 
     $('#stop-recording').click(() => {
+      $('#start-recording').show()
+      $('#stop-recording').hide()
       self.network.unmute()
       recordMic.stop()
       var monoData = recordMic.getMonoData()
