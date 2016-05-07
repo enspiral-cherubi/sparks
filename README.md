@@ -9,7 +9,7 @@
 
 ```
 git clone https://github.com/enspiral-cherubi/sparks
-cd 
+cd sparks
 npm install
 ```
 
