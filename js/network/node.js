@@ -24,9 +24,9 @@ class Node {
     this.edges = new THREE.EdgesHelper(this.mesh, 0x000000)
 
     this.vector = new THREE.Vector3(
-      randomNumberInRange(-10, 10) / 60,
-      randomNumberInRange(-10, 10) / 60,
-      randomNumberInRange(-10, 10) / 60
+      randomNumberInRange(-10, 10) / 100,
+      randomNumberInRange(-10, 10) / 100,
+      randomNumberInRange(-10, 10) / 100
     )
   }
 
